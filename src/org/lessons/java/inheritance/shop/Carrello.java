@@ -13,8 +13,10 @@ public class Carrello {
 		int intMemory = 0;
 		int intTvInch = 0;
 		String strColor= null;	
+		boolean fidelity = false;
 		int i = 0;
 		Prodotto[] products = new Prodotto[PRODUCT_COUNT];
+		
 		
 		
 		while(true) {
@@ -42,6 +44,13 @@ public class Carrello {
 			System.out.print("prezzo del prodotto? ");
 			String strPriceProduct = in.nextLine();
 			int intPriceProduct = Integer.valueOf(strPriceProduct);
+			
+			System.out.print("possiedi la carta fedeltà? ");
+			String strFidelity = in.nextLine();
+			if(strFidelity.equals("si")) {
+				fidelity = true;
+			}
+			
 			
 			if(strType.equals("smartphone")) {
 				System.out.print("inserisci codice IMEI: ");
@@ -82,17 +91,17 @@ public class Carrello {
 			  switch (CapitalizedProductType) {
 				case "Smartphone": {
 					
-					products[i] = new Smartphone(strNameProduct, strDescriptionProduct, intPriceProduct, intMemory, strImei);
+					products[i] = new Smartphone(strNameProduct, strDescriptionProduct, intPriceProduct,fidelity,  intMemory, strImei);
 					i++;
 					break;
 				}
 				case "Televisore": {
-					products[i] = new Televisori(strNameProduct, strDescriptionProduct, intPriceProduct, smartTV, intTvInch);
+					products[i] = new Televisori(strNameProduct, strDescriptionProduct, intPriceProduct, fidelity,  smartTV, intTvInch);
 					i++;
 					break;
 				}
 				case "Cuffie":{
-					products[i] = new Cuffie(strNameProduct, strDescriptionProduct, intPriceProduct, wireless, strColor);
+					products[i] = new Cuffie(strNameProduct, strDescriptionProduct, intPriceProduct, fidelity,  wireless, strColor);
 					i++;
 					break;
 				}
@@ -105,7 +114,7 @@ public class Carrello {
 	  
 			}
 		
-		  for (int j = 0; j <i; j++) {
+		  for (int j = 0; j<i; j++) {
 	            System.out.println(products[j] + "\n");
 	        }
 		  

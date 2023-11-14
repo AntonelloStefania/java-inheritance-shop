@@ -7,8 +7,8 @@ public class Cuffie extends Prodotto{
 
 
 
-	public Cuffie(String name, String description, float price, boolean cable, String color) {
-		super(name, description, price);
+	public Cuffie(String name, String description, float price, boolean fidelity, boolean cable, String color) {
+		super(name, description, price, fidelity);
 		
 		setCable(cable);
 		setColor(color);
