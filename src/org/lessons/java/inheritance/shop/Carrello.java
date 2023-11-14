@@ -16,16 +16,22 @@ public class Carrello {
 		boolean fidelity = false;
 		int i = 0;
 		Prodotto[] products = new Prodotto[PRODUCT_COUNT];
+		double sum = 0;
 		
-		
+		Scanner in = new Scanner(System.in);
+		System.out.print("possiedi la carta fedeltà? ");
+		String strFidelity = in.nextLine();
+		if(strFidelity.equals("si")) {
+			fidelity = true;
+		}
 		
 		while(true) {
 			
-			Scanner in = new Scanner(System.in);
+			
 			System.out.print("\n" + "vuoi aggiungere un prodotto? ");
 			String strAddProduct= in.nextLine();
 			 
-			if(strAddProduct.equals("no")) {
+			if(!strAddProduct.equals("si")) {
 				in.close();
 				break;
 			}
@@ -43,13 +49,8 @@ public class Carrello {
 			
 			System.out.print("prezzo del prodotto? ");
 			String strPriceProduct = in.nextLine();
-			int intPriceProduct = Integer.valueOf(strPriceProduct);
+			float intPriceProduct = Float.valueOf(strPriceProduct);
 			
-			System.out.print("possiedi la carta fedeltà? ");
-			String strFidelity = in.nextLine();
-			if(strFidelity.equals("si")) {
-				fidelity = true;
-			}
 			
 			
 			if(strType.equals("smartphone")) {
@@ -116,6 +117,13 @@ public class Carrello {
 		
 		  for (int j = 0; j<i; j++) {
 	            System.out.println(products[j] + "\n");
+	          if(fidelity==true) {
+	        	  sum += products[j].getDiscountedPrice();
+	        	  System.out.println("il totale del carrello e': " + String.format("%.2f", sum)+ "€");
+	          }else {
+	        	  sum += products[j].getFullPrice();
+	        	  System.out.println("il totale del carrello e': " + String.format("%.2f", sum)+ "€");
+	          }
 	        }
 		  
 	}

@@ -9,6 +9,7 @@ public class Prodotto {
 	private float price;
 	private int iva;
 	private boolean fidelity;
+	private int sum;
 
 	
 	Random rnd = new Random();
@@ -106,6 +107,13 @@ public class Prodotto {
 		
 
 	}
+	
+	public double getSum() {
+		if(isFidelity()) {
+			return sum += getDiscountedPrice();
+		}
+		return sum += getFullPrice();
+	}
 	@Override
 	public String toString() {
 
@@ -116,7 +124,7 @@ public class Prodotto {
 				+ "prezzo: " + String.format("%.02f", getPrice()) + "€\n"
 				+ "iva: " + getIva() + "%\n"
 				+ "il prezzo comprensivo di iva e': " + String.format("%.02f", getFullPrice()) +"€\n"
-				+ "il prezzo scontato e' di: " + String.format("%.02f", getDiscountedPrice()) + "€\n"
+				+ (isFidelity()? ("il prezzo scontato e' di: " + String.format("%.02f", getDiscountedPrice())+ "€"):("")) + "\n"
 				+ "il nome completo di codice e': " + getFullName() + "\n";
 	}
 	
