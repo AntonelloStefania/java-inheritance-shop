@@ -31,7 +31,7 @@ public class Televisori extends Prodotto{
 	public String toString() {
 		
 		return super.toString() + "\n"
-				+ "smart TV: " + isSmart() + "\n"
+				+ "smart TV: " + (isSmart() ? "si" : "no") + "\n"
 				+ "dimensioni schermo: " + getSize() + " pollici\n"
 				+ "---------------------------\n";
 	}

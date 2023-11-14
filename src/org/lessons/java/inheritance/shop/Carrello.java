@@ -12,8 +12,8 @@ public class Carrello {
 		String strImei = null;
 		int intMemory = 0;
 		int intTvInch = 0;
-		String strColor= null;
-		int i = 0;	
+		String strColor= null;	
+		int i = 0;
 		Prodotto[] products = new Prodotto[PRODUCT_COUNT];
 		
 		
@@ -23,11 +23,14 @@ public class Carrello {
 			System.out.print("\n" + "vuoi aggiungere un prodotto? ");
 			String strAddProduct= in.nextLine();
 			 
-			if(strAddProduct.equals("no")) break;
+			if(strAddProduct.equals("no")) {
+				in.close();
+				break;
+			}
 			
 			
 			
-			System.out.print("che tipologia di prodotto? (smartphone/televisore/cuffie)");
+			System.out.print("che tipologia di prodotto? (smartphone/televisore/cuffie): ");
 			String strType = in.nextLine();
 			
 			System.out.print("quale e' il nome del prodotto? ");
@@ -49,14 +52,14 @@ public class Carrello {
 				intMemory = Integer.valueOf(strMemory);
 				
 			}else if(strType.equals("televisore")) {
-				System.out.print("e' una smartTV? si/no");
+				System.out.print("e' una smartTV? si/no: ");
 				String strSmartTV = in.nextLine();
 				
 				if(strSmartTV.equals("si")) {
 					smartTV = true;
 				}
 				
-				System.out.println("dimensioni in pollici dello schermo: ");
+				System.out.print("dimensioni in pollici dello schermo: ");
 				String strTvInch = in.nextLine();
 				intTvInch = Integer.valueOf(strTvInch);
 				
@@ -64,7 +67,7 @@ public class Carrello {
 				System.out.print("colore: ");
 				strColor = in.nextLine();
 				
-				System.out.print("sono wireless? si/no");
+				System.out.print("sono wireless? si/no: ");
 				String strWireless = in.nextLine();
 				
 				if(strWireless.equals("si")) {
@@ -72,7 +75,7 @@ public class Carrello {
 				}
 			}
 			
-			in.close();
+			
 			
 			  String CapitalizedProductType = strType.substring(0, 1).toUpperCase() + strType.substring(1).toLowerCase();
 			  
@@ -80,26 +83,32 @@ public class Carrello {
 				case "Smartphone": {
 					
 					products[i] = new Smartphone(strNameProduct, strDescriptionProduct, intPriceProduct, intMemory, strImei);
+					i++;
 					break;
 				}
 				case "Televisore": {
 					products[i] = new Televisori(strNameProduct, strDescriptionProduct, intPriceProduct, smartTV, intTvInch);
+					i++;
 					break;
 				}
 				case "Cuffie":{
 					products[i] = new Cuffie(strNameProduct, strDescriptionProduct, intPriceProduct, wireless, strColor);
+					i++;
 					break;
 				}
 				default:
 					throw new IllegalArgumentException("Unexpected value: " + CapitalizedProductType);
+					
 				}
-
+			
+				
+	  
 			}
-		 
-		for (i = 0; i <PRODUCT_COUNT; i++) {
-	            System.out.println(products[i] + "\n");
+		
+		  for (int j = 0; j <i; j++) {
+	            System.out.println(products[j] + "\n");
 	        }
 		  
-		  
 	}
+		
 }
