@@ -80,33 +80,29 @@ public class Prodotto {
 
 	public double getDiscountedPrice() {
 		
-			if(this instanceof Smartphone ) {
-				Smartphone smartphone= (Smartphone)this;
-				if(smartphone.getMemory()<32 && isFidelity() == true ) {
-					return getFullPrice() * 0.95;
-				}else if(smartphone.getMemory() > 32 && isFidelity()== true) {
-					return getFullPrice() * 0.98;
-				}
-			}else if(this instanceof Cuffie) {
-				Cuffie cuffie=(Cuffie)this;
-				if(cuffie.isCable()== true && isFidelity()== true) {
-					return getFullPrice() * 0.93;
-				}else if(cuffie.isCable()== false && isFidelity()== true) {
-					return getFullPrice() * 0.98;
-				}
-			}else if(this instanceof Televisori) {
-				Televisori televisore = (Televisori)this;
-				if(televisore.isSmart() == true && isFidelity()==true) {
-					return getFullPrice() * 0.90;
-				}else if(televisore.isSmart() == false && isFidelity()==true)
-					return getFullPrice()*0.98;
-			}	
-	
-			
-			return getFullPrice();				
 		
-
+		if(this instanceof Smartphone ) {
+			Smartphone smartphone= (Smartphone)this;
+			if(smartphone.getMemory()<32 && isFidelity() == true ) {
+				return getFullPrice() * 0.95;
+			}
+		}else if(this instanceof Cuffie) {
+			Cuffie cuffie=(Cuffie)this;
+			if(cuffie.isCable()== true && isFidelity()== true) {
+				return getFullPrice() * 0.93;
+			}
+		}else if(this instanceof Televisori) {
+			Televisori televisore = (Televisori)this;
+			if(televisore.isSmart() == true && isFidelity()==true) {
+				return getFullPrice() * 0.90;
+			}
+		
+		}
+		return getFullPrice() * 0.98;				
+		
 	}
+
+	
 	
 	public double getSum() {
 		if(isFidelity()) {

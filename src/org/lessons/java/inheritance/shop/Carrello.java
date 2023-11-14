@@ -115,17 +115,15 @@ public class Carrello {
 	  
 			}
 		
-		  for (int j = 0; j<i; j++) {
+		  for (int j= 0; j<i; j++) {
 	            System.out.println(products[j] + "\n");
-	          if(fidelity==true) {
-	        	  sum += products[j].getDiscountedPrice();
-	        	  System.out.println("il totale del carrello e': " + String.format("%.2f", sum)+ "€");
-	          }else {
-	        	  sum += products[j].getFullPrice();
-	        	  System.out.println("il totale del carrello e': " + String.format("%.2f", sum)+ "€");
-	          }
+	            if(fidelity==true) {
+	            	 sum += products[j].getDiscountedPrice();	            	
+	            }else {
+	            	sum += products[j].getFullPrice();
+	            }
 	        }
-		  
+		  System.out.println("il totale del carrello e': " + String.format("%.2f", sum)+ "€");
 	}
 		
 }
